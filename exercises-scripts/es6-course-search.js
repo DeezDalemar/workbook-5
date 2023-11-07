@@ -1,3 +1,5 @@
+let courseId = "PROG200";
+
 let courses = [
    {
       CourseId: "PROG100",
@@ -36,9 +38,6 @@ let courses = [
    },
 ];
 
-let courseStartDate = courses.find(findCourseStartDate);
-console.log(`The "${courseStartDate.Title}" starts at ${courseStartDate.StartDate}`);
-
 let courseTitle = courses.find(findCourseTitle);
 console.log(`The title of the ${courseTitle.CourseId} is ${courseTitle.Title}`);
 
@@ -54,13 +53,18 @@ for (const course of class1Courses) {
    console.log(course.Title);
 }
 
-function findCourseStartDate(courses) {
-   if (courses.CourseId == "PROG200") {
+function findCourseStartDate(course, courseId) {
+   if (course.CourseId == courseId) {
       return true;
    } else {
       return false;
    }
 }
+
+let courseStartDate = courses.find(function (course) {
+   return findCourseStartDate(course, courseId);
+});
+console.log(`The "${courseStartDate.Title}" starts at ${courseStartDate.StartDate}`);
 
 function findCourseTitle(courses) {
    if (courses.CourseId == "PROJ500") {
